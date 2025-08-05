@@ -22,7 +22,7 @@
                 <div class="select-condominio">
                     <div class="checkbox"></div>
                     <div class="option-condominio">
-                        <h3>Bosque do Cerrado</h2>
+                        <h3>Bosque do Cerrado</h3>
                     </div>
                     <i class="fa-solid fa-caret-down fa-2xl" style="color: #E9F3F9;"></i>
                 </div>
@@ -39,20 +39,17 @@
                 </button>
             </div>
 
-
             <div class="accordion-cadastro" id="accordionCadastro">
                 <div class="header-form">
                     <i class="fa-solid fa-chevron-down"></i>
                     <h3>Nova Tarefa</h3>
                 </div>
                 <div class="form-cadastro">
-                    
                     <form id="formTarefa">
                         <div class="form-group">
                             <label for="nome">Nome da Tarefa:</label>
                             <input type="text" id="nome" name="nome" required>
                         </div>
-                        
 
                         <div class="form-dates">
                             <div class="form-date-labels">
@@ -61,50 +58,42 @@
                             </div>
                             <div class="input-date">
                                 <div>
-                                    <input 
-                                        type="date"
-                                        id="dataInicio" 
-                                        name="dataInicio" 
-                                        required>
+                                    <input type="date" id="dataInicio" name="dataInicio" required>
                                     <i class="fa-solid fa-calendar-days fa-2xl" style="color: #3E9AD9; padding-left: 4px;"></i>
                                 </div>
                                 <div>
-                                    <input 
-                                        type="date" 
-                                        id="dataConclusao" 
-                                        name="dataConclusao" 
-                                        required>
-                                    <i class="fa-solid fa-calendar-days fa-2xl" style="color: #3E9AD9; padding-left: 4px;" ></i>
+                                    <input type="date" id="dataConclusao" name="dataConclusao" required>
+                                    <i class="fa-solid fa-calendar-days fa-2xl" style="color: #3E9AD9; padding-left: 4px;"></i>
                                 </div>
                             </div>
                         </div>
 
-                        
                         <div class="form-custos">
-                                <div class="custo-estimado">
-                                    <label for="custoEstimado">Custo Estimado (R$):</label>
-                                    <div class="custo-estimado-input">
-                                        <div>
-                                            <i class="fa-solid fa-brazilian-real-sign" style="color: #E9F3F9;"></i>
-                                        </div>
-                                        <div>
-                                            <input type="number" id="custoEstimado" name="custoEstimado" step="0.01" min="0" placeholder="0,00" required>
-                                        </div>  
+                            <div class="custo-estimado">
+                                <label for="custoEstimado">Custo Estimado (R$):</label>
+                                <div class="custo-estimado-input">
+                                    <div>
+                                        <i class="fa-solid fa-brazilian-real-sign" style="color: #E9F3F9;"></i>
                                     </div>
+                                    <div>
+                                        <input type="number" id="custoEstimado" name="custoEstimado" step="0.01" min="0" placeholder="0,00" required>
+                                    </div>  
                                 </div>
-                                <div class="custo-status">
-                                    <label for="status">Status da Tarefa:</label>
-                                    <div class="custo-status-select">
-                                        <select id="status" name="status" required>
-                                            <option value="">Selecione o status</option>
-                                            <option value="concluido">Concluído</option>
-                                            <option value="em-andamento">Em Andamento</option>
-                                            <option value="pendente">Pendente</option>
-                                        </select>
-                                        <i class="fa-solid fa-caret-down" style="color: #E9F3F9;"></i>
-                                    </div>
+                            </div>
+                            <div class="custo-status">
+                                <label for="status">Status da Tarefa:</label>
+                                <div class="custo-status-select">
+                                    <select id="status" name="status" required>
+                                        <option value="">Selecione o status</option>
+                                        <option value="concluido">Concluído</option>
+                                        <option value="em-andamento">Em Andamento</option>
+                                        <option value="pendente">Pendente</option>
+                                    </select>
+                                    <i class="fa-solid fa-caret-down" style="color: #E9F3F9;"></i>
                                 </div>
-                        </div>                       
+                            </div>
+                        </div>
+
                         <div class="form-buttons">
                             <div class="button-voltar">
                                 <div class="icon-voltar">
@@ -129,202 +118,33 @@
                 </div>
             </div>
 
-            <!-- Lista de tarefas -->
-            <div class="tarefas-list" id="tarefasList">
-                <!-- As tarefas serão inseridas aqui dinamicamente -->
+            <div class="accordion-confirmacao" id="accordionConfirmacao">
+                <div class="header-confirmacao">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <h3>Deseja excluir?</h3>
+                </div>
+                <div class="form-confirmacao">
+                    <div class="confirmacao-buttons">
+                        <div class="button-confirmar-exclusao">
+                            <div class="icon-confirmar-exclusao">
+                                <i class="fas fa-check" style="color: #E9F3F9;"></i>
+                            </div>
+                            <button type="button" class="btn-confirmar-exclusao" onclick="confirmarExclusao()">Sim</button>
+                        </div>
+                        <div class="button-cancelar-confirmacao">
+                            <div class="icon-cancelar-confirmacao">
+                                <i class="fas fa-times" style="color: #E9F3F9;"></i>
+                            </div>
+                            <button type="button" class="btn-cancelar-confirmacao" onclick="fecharConfirmacao()">Não</button>
+                        </div>
+                    </div>
+                </div>
             </div>
+
+            <div class="tarefas-list" id="tarefasList"></div>
         </main>
     </div>
 
-    <script>
-        let tarefas = [];
-        let editandoId = null;
-
-        // Toggle do acordeão de cadastro
-        function toggleCadastro() {
-            const accordion = document.getElementById('accordionCadastro');
-            const isOpen = accordion.classList.contains('open');
-            
-            if (isOpen) {
-                accordion.classList.remove('open');
-                resetForm();
-            } else {
-                accordion.classList.add('open');
-            }
-        }
-
-        // Reset do formulário
-        function resetForm() {
-            document.getElementById('formTarefa').reset();
-            editandoId = null;
-            document.querySelector('.header-form h3').textContent = 'Nova Tarefa';
-            document.querySelector('.btn-salvar').textContent = 'Salvar';
-            // Esconder botão de excluir
-            document.querySelector('.button-excluir').style.display = 'none';
-        }
-
-        // Submit do formulário
-        document.getElementById('formTarefa').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const formData = new FormData(this);
-            const tarefa = {
-                id: editandoId || Date.now(),
-                nome: formData.get('nome'),
-                dataInicio: formData.get('dataInicio'),
-                dataConclusao: formData.get('dataConclusao'),
-                custoEstimado: parseFloat(formData.get('custoEstimado')),
-                status: formData.get('status')
-            };
-
-            if (editandoId) {
-                // Editar tarefa existente
-                const index = tarefas.findIndex(t => t.id === editandoId);
-                tarefas[index] = tarefa;
-            } else {
-                // Adicionar nova tarefa
-                tarefas.push(tarefa);
-            }
-
-            renderTarefas();
-            toggleCadastro();
-        });
-
-        // Renderizar lista de tarefas
-        function renderTarefas() {
-            const container = document.getElementById('tarefasList');
-            container.innerHTML = '';
-
-            tarefas.forEach(tarefa => {
-                const tarefaElement = createTarefaElement(tarefa);
-                container.appendChild(tarefaElement);
-            });
-        }
-
-        // Criar elemento de tarefa
-        function createTarefaElement(tarefa) {
-            const div = document.createElement('div');
-            div.className = 'tarefa-item';
-            
-            const statusClass = `status-${tarefa.status}`;
-            
-            div.innerHTML = `
-                <div class="tarefa-header" onclick="toggleTarefa(${tarefa.id})">
-                    <div class="tarefa-info">
-                        <span class="tarefa-titulo">${tarefa.nome}</span>
-                        <span class="tarefa-status ${statusClass}">${getStatusLabel(tarefa.status)}</span>
-                    </div>
-                    <div class="tarefa-actions">
-                        <button class="btn-edit" onclick="editarTarefa(${tarefa.id}); event.stopPropagation();" title="Editar tarefa">
-                            <i class="fas fa-pencil-alt"></i>
-                        </button>
-                        <i class="fas fa-chevron-down tarefa-chevron"></i>
-                    </div>
-                </div>
-                <div class="tarefa-content" id="tarefa-${tarefa.id}">
-                    <div class="tarefa-details">
-                        <p><strong>Data de Início:</strong> ${new Date(tarefa.dataInicio).toLocaleDateString('pt-BR')}</p>
-                        <p><strong>Data de Conclusão:</strong> ${new Date(tarefa.dataConclusao).toLocaleDateString('pt-BR')}</p>
-                        <p><strong>Custo Estimado:</strong> R$ ${tarefa.custoEstimado.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</p>
-                        <p><strong>Status:</strong> <span class="${statusClass}">${getStatusLabel(tarefa.status)}</span></p>
-                    </div>
-                </div>
-            `;
-            
-            return div;
-        }
-
-        // Função para obter o label do status
-        function getStatusLabel(status) {
-            const statusLabels = {
-                'concluido': 'Concluído',
-                'em-andamento': 'Em Andamento', 
-                'pendente': 'Pendente'
-            };
-            return statusLabels[status] || status;
-        }
-
-        // Toggle do acordeão de tarefa
-        function toggleTarefa(id) {
-            const content = document.getElementById(`tarefa-${id}`);
-            const chevron = content.previousElementSibling.querySelector('.tarefa-chevron');
-            
-            if (content.classList.contains('open')) {
-                content.classList.remove('open');
-                chevron.style.transform = 'rotate(0deg)';
-            } else {
-                content.classList.add('open');
-                chevron.style.transform = 'rotate(180deg)';
-            }
-        }
-
-        // Editar tarefa
-        function editarTarefa(id) {
-            const tarefa = tarefas.find(t => t.id === id);
-            if (!tarefa) return;
-
-            // Preencher formulário
-            document.getElementById('nome').value = tarefa.nome;
-            document.getElementById('dataInicio').value = tarefa.dataInicio;
-            document.getElementById('dataConclusao').value = tarefa.dataConclusao;
-            document.getElementById('custoEstimado').value = tarefa.custoEstimado;
-            document.getElementById('status').value = tarefa.status;
-
-            // Alterar título e botão
-            document.querySelector('.header-form h3').textContent = 'Editar Tarefa';
-            document.querySelector('.btn-salvar').textContent = 'Atualizar';
-            
-            // Mostrar botão de excluir
-            document.querySelector('.button-excluir').style.display = 'flex';
-            document.querySelector('.btn-excluir').style.display = 'block';
-            
-            editandoId = id;
-            
-            // Abrir acordeão
-            document.getElementById('accordionCadastro').classList.add('open');
-        }
-
-        // Excluir tarefa do formulário
-        function excluirTarefaForm() {
-            if (!editandoId) return;
-            
-            const tarefa = tarefas.find(t => t.id === editandoId);
-            if (!tarefa) return;
-
-            // Confirmar exclusão
-            const confirmar = confirm(`Tem certeza que deseja excluir a tarefa "${tarefa.nome}"?`);
-            
-            if (confirmar) {
-                // Remover tarefa do array
-                tarefas = tarefas.filter(t => t.id !== editandoId);
-                
-                // Atualizar lista
-                renderTarefas();
-                
-                // Fechar formulário
-                toggleCadastro();
-            }
-        }
-
-        // Excluir tarefa (função antiga mantida para compatibilidade)
-        function excluirTarefa(id) {
-            const tarefa = tarefas.find(t => t.id === id);
-            if (!tarefa) return;
-
-            // Confirmar exclusão
-            const confirmar = confirm(`Tem certeza que deseja excluir a tarefa "${tarefa.nome}"?`);
-            
-            if (confirmar) {
-                // Remover tarefa do array
-                tarefas = tarefas.filter(t => t.id !== id);
-                
-                // Atualizar lista
-                renderTarefas();
-                
-                // Se estava editando essa tarefa, fechar o formulário
-                if (editandoId === id) {
-                    toggleCadastro();
-                }
-            }
-        }
-    </script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -238,7 +238,27 @@ body {
     padding-block: 8px;
 }
 
+.form-date-results-labels {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%;
+    background: linear-gradient(#eeeeee, #dfdfdf);
+    border: #d8d8d8 1px solid;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    padding-block: 8px;
+}
+
 .form-date-labels h3 {
+    color: #3E9AD9;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'Arial', sans-serif;
+}
+
+.form-date-results-labels h3 {
     color: #3E9AD9;
     font-size: 14px;
     font-weight: 600;
@@ -261,6 +281,20 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
     background: linear-gradient(#eeeeee, #dfdfdf);
+}
+
+.input-date-results {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 80%;
+    padding: 8px 12px;
+    font-size: 12px;
+    border: #d8d8d8 1px solid;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    background: linear-gradient(#eeeeee, #dfdfdf);
+    color: #828282;
 }
 
 .input-date input {
@@ -455,11 +489,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     box-shadow: #5a6268 0px 2px 4px;
 }
 
-/* Lista de tarefas */
 .tarefas-list {
     display: flex;
     flex-direction: column;
-    gap: 12px;
 }
 
 .tarefa-item {
@@ -470,23 +502,25 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .tarefa-header {
-    padding: 16px;
+    padding: 12px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-
-.tarefa-header:hover {
-    background-color: #F8F9FA;
+    background: linear-gradient(#eeeeee, #dfdfdf);
+    border-radius: 8px;
+    box-shadow: #5a6268 0px 2px 4px;
 }
 
 .tarefa-info {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 4px;
     flex: 1;
+}
+
+.tarefa-info span {
+    color: #3E9AD9;
+    font-weight: 700;
 }
 
 .tarefa-titulo {
@@ -538,11 +572,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .tarefa-content.open {
-    max-height: 200px;
+    min-height: 800px;
 }
 
 .tarefa-details {
-    padding: 0 16px 16px 16px;
+    padding: 16px;
+    padding-top: 40px;
     border-top: 1px solid #CADCE0;
 }
 
@@ -556,7 +591,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     color: #333;
 }
 
-/* Classes de status */
 .status-nao-iniciado {
     background-color: #F8F9FA;
     color: #6C757D;
@@ -577,7 +611,284 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     color: #721C24;
 }
 
-/* Responsividade */
+.custo-estimado-results {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 12px;
+    width: 100%;
+}
+
+.custo-estimado-results p {
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    align-items: center;
+}
+
+.custo-estimado-results strong {
+    color: #3E9AD9;
+    font-weight: 700;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.accordion-confirmacao {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: linear-gradient(#f8d7da, #f5c6cb);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.accordion-confirmacao.open {
+    max-height: 300px;
+}
+
+.header-confirmacao {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-weight: 700;
+    width: 100%;
+    height: 40px;
+    gap: 12px;
+    padding-left: 12px;
+}
+
+.header-confirmacao i {
+    color: #dc3545;
+    font-size: 12px;
+}
+
+.header-confirmacao h3 {
+    color: #dc3545;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: 'Arial', sans-serif;
+}
+
+.form-confirmacao {
+    padding: 20px;
+}
+
+.confirmacao-body {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.confirmacao-body p {
+    margin: 0 0 10px 0;
+    color: #333;
+    font-size: 14px;
+}
+
+.confirmacao-warning {
+    color: #6c757d;
+    font-size: 12px;
+    font-style: italic;
+}
+
+.confirmacao-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.button-cancelar-confirmacao,
+.button-confirmar-exclusao {
+    display: flex;
+    flex-direction: row;
+}
+
+.btn-cancelar-confirmacao,
+.btn-confirmar-exclusao {
+    background: linear-gradient(#f0f0f0, #d2d2d2);
+    padding: 8px 12px;
+    border: none;
+    color: #5a6268;
+    font-size: 12px;
+    font-weight: 700;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    box-shadow: #5a6268 0px 2px 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.icon-cancelar-confirmacao {
+    padding: 8px;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    background: linear-gradient(#dc3545, #c82333);
+    box-shadow: #5a6268 0px 2px 4px;
+}
+
+.icon-confirmar-exclusao {
+    padding: 8px;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    background: linear-gradient(#00ab2d, #009a3b);
+    box-shadow: #5a6268 0px 2px 4px;
+}
+
+.container-comentarios {
+    display: flex;
+    flex-direction: column;
+    padding-top: 16px;
+}
+
+.comentarios-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #5a6268;
+    padding-left: 8px;
+    padding-block: 12px;
+    gap: 8px;
+    background-color: #CADCE0;
+}
+
+.card-comentario {
+    height: 160px;
+    width: 100%;
+    background-color: #FFFFFF;
+}
+
+.conteudo-comentario {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-around;
+    padding: 12px;
+}
+
+.icon-comentario img {
+    width: 36px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 4px
+}
+
+
+.text-comentario {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 80%;
+}
+
+.text-comentario h3 {
+    font-size: 12px;
+    color: #3E9AD9;
+    font-weight: 700;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.text-comentario p {
+    font-size: 10px;
+    color: #7c7c7c;
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.name-trash-comentario {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.name-trash-comentario i {
+    background: linear-gradient(#e4e4e4, #e4e4e4);
+    padding: 2px;
+    border-radius: 2px;
+    box-shadow: #5a6268 0px 0px 1px;
+}
+
+.data-comentario {
+    font-size: 10px;
+    color: #7c7c7c;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-style: italic;
+    padding-left: 16px;
+}
+
+.buttons-comentarios {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    background-color: #ffffff;
+    padding-top: 16px; 
+    gap: 16px;
+}
+
+.button-mais-comentarios {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-mais-comentarios button {
+    background: linear-gradient(#a8bc16, #aabd17);
+    border: #5a6268 1px solid;
+    padding: 8px 12px;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 4px;
+}
+
+.input-comentario input{
+    width: 100%;
+    height: 100px;
+    border-radius: 8px;
+    background-color: #D8E9E6;
+    border: 1px solid #0076BA;
+}
+
+.input-comentario {
+    padding-inline: 12px;
+}
+
+.button-enviar-comentario {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding-right: 12px;
+    padding-bottom: 16px;
+}
+
+.button-enviar-comentario i {
+    padding: 8px;
+    background: linear-gradient(#0076BA, #0083C7);
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    box-shadow: #6C757D 0px 2px 4px;
+}
+
+.button-enviar-comentario button {
+    background: linear-gradient(#E3F2FD, #d1d1d1);
+    padding: 8px 12px;
+    border: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    color: #5a6268;
+    box-shadow: #6C757D 0px 2px 4px;
+}
+
 @media (max-width: 480px) {
     .main-content {
         padding: 12px;
