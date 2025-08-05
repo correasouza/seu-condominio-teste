@@ -269,6 +269,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-size: 12px;
     background-color: #D8E9E6;
     box-shadow: #3E9AD9 0px 1px 1px;
+    padding-block: 8px;
 }
 
 .input-date div {
@@ -280,6 +281,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .form-buttons {
     display: flex;
     gap: 12px;
+    justify-content: flex-end;
     margin-top: 20px;
 }
 
@@ -287,6 +289,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     display: flex;
     flex-direction: row;
     padding-top: 16px;
+    gap: 16px;
 }
 
 .form-custos label {
@@ -296,67 +299,160 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-family: 'Arial', sans-serif;
 }
 
-.form-custos input {
+.custo-estimado {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+}
+
+.custo-estimado i {
+    background: linear-gradient(#0083C7, #0076BA);
+    padding: 8px;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    box-shadow: #0083C7 0px 1px 1px;
+}
+
+.custo-estimado label {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
     width: 100%;
-    padding: 8px 12px;
-    border: 1px solid #a0d9ff;
-    border-radius: 4px;
-    font-size: 12px;
-    background-color: #D8E9E6;
-    box-shadow: #3E9AD9 0px 1px 1px;
 }
 
-.form-custos input:focus {
-    outline: none;
-    border-color: #0076BA;
-    background-color: #D8E9E6;
-    box-shadow: #a0d9ff 0px 1px 1px;
-}
-
-.input-custos {
+.custo-estimado-input {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-.btn-salvar,
-.btn-cancelar,
-.btn-excluir {
-    flex: 1;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
+.custo-estimado-input input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #a0d9ff;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
     font-size: 12px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s ease;
+    background-color: #D8E9E6;
+    box-shadow: #0083C7 0px 1px 1px;
+}
+
+.custo-estimado-input input:focus {
+    outline: none;
+}
+
+.custo-status {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.custo-status-select {
+    display: flex;
+    flex-direction: row;
+}
+
+.custo-status-select select {
+    appearance: none;
+    -webkit-appearance: none;   
+    -moz-appearance: none; 
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #a0d9ff;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    font-size: 12px;
+    background-color: #D8E9E6;
+    box-shadow: #0083C7 0px 1px 1px;
+}
+
+.custo-status-select select:focus {
+    outline: none;
+    color: #0083C7;
+}
+
+.custo-status-select i {
+    background: linear-gradient(#0083C7, #0076BA);
+    padding: 8px 10px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    box-shadow: #0083C7 0px 1px 1px;
+}
+
+.button-voltar {
+    display: flex;
+    flex-direction: row;
+}
+
+.btn-voltar {
+    background: linear-gradient(#f0f0f0, #d2d2d2);
+    padding: 8px 12px;
+    border: none;
+    color: #5a6268;
+    font-size: 12px;
+    font-weight: 700;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    box-shadow: #5a6268 0px 2px 4px;
+}
+
+.icon-voltar {
+    padding: 8px;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    background: linear-gradient(#0083C7, #0076BA);
+    box-shadow: #5a6268 0px 2px 4px;
+}
+
+.button-excluir {
+    display: flex;
+    flex-direction: row;
+}
+
+.btn-excluir {
+    background: linear-gradient(#f0f0f0, #d2d2d2);
+    padding: 8px 12px;
+    border: none;
+    color: #5a6268;
+    font-size: 12px;
+    font-weight: 700;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    box-shadow: #5a6268 0px 2px 4px;
+}
+
+.icon-excluir {
+    padding: 8px;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    background: linear-gradient(#dc3545, #c82333);
+    box-shadow: #5a6268 0px 2px 4px;
+}
+
+.button-salvar {
+    display: flex;
+    flex-direction: row;
 }
 
 .btn-salvar {
-    background: linear-gradient(#28a745, #20963d);
-    color: white;
+    background: linear-gradient(#f0f0f0, #d2d2d2);
+    padding: 8px 12px;
+    border: none;
+    color: #5a6268;
+    font-size: 12px;
+    font-weight: 700;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    box-shadow: #5a6268 0px 2px 4px;
 }
 
-.btn-salvar:hover {
-    background: linear-gradient(#20963d, #1e7e34);
-}
-
-.btn-cancelar {
-    background: linear-gradient(#6c757d, #5a6268);
-    color: white;
-}
-
-.btn-cancelar:hover {
-    background: linear-gradient(#5a6268, #495057);
-}
-
-.btn-excluir {
-    background: linear-gradient(#dc3545, #c82333);
-    color: white;
-}
-
-.btn-excluir:hover {
-    background: linear-gradient(#c82333, #bd2130);
+.icon-salvar {
+    padding: 8px;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    background: linear-gradient(#38950b, #39BB02);
+    box-shadow: #5a6268 0px 2px 4px;
 }
 
 /* Lista de tarefas */
